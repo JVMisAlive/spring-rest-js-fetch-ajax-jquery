@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>User Page</title>
+</head>
+
+<body>
+<nav class="navbar navbar-dark bg-dark shadow mb-2">
+    <div>
+        <span class="text-white" style="font-weight: bold" id="userTitle"></span>
+        <span class="text-white" style="font-weight: lighter"> with roles:</span>
+        <span class="text-white" style="font-weight: lighter" id="roleTitle"></span>
+    </div>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+    </ul>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+
+        <nav class="col-md-2 sidebar">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#userInfo" role="tab"
+                   aria-controls="v-pills-profile" aria-selected="false">User</a>
+            </div>
+        </nav>
+
+        <div class="col-md-10 bg0-light">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" role="tabpanel"
+                     aria-labelledby="v-pills-profile-tab">
+
+                    <h2 class="mb-4">User Control Panel</h2>
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#userInfo" role="tab"
+                               aria-controls="v-pills-profile" aria-selected="true">User Info</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-pane fade show active" id="userInfo" role="tabpanel"
+                         aria-labelledby="v-pills-profile-tab">
+
+                        <p class="lead">
+                            <strong>About User</strong>
+                        </p>
+
+                        <table id="UserInfoTable" class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nickname</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Surname</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Role</th>
+                            </tr>
+                            </thead>
+                            <tbody id="userInformation">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="/js/user.js"></script>
+</body>
+</html>

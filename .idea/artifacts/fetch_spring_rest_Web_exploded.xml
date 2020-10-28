@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="fetch-spring-rest:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/fetch_spring_rest_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="spring-rest-js-fetch-ajax-jquery/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="spring-rest-js-fetch-ajax-jquery" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
