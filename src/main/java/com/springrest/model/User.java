@@ -1,5 +1,6 @@
 package com.springrest.model;
 
+import com.springrest.dto.UserDto;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -43,6 +44,18 @@ public class User implements UserDetails {
 
     public User() {
 
+    }
+
+    public User(UserDto userDto) {
+        this.id = userDto.getId();
+        this.nickname = userDto.getNickname();
+        this.firstName = userDto.getFirstName();
+        this.lastName = userDto.getLastName();
+        this.age = userDto.getAge();
+        this.email = userDto.getEmail();
+        this.password = userDto.getPassword();
+        this.confirmPassword = userDto.getConfirmPassword();
+        this.roles = userDto.getSetRoles();
     }
 
     //Возвращает список ролей пользователя

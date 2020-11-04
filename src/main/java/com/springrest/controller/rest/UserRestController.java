@@ -1,7 +1,6 @@
 package com.springrest.controller.rest;
 
 import com.springrest.dto.UserDto;
-import com.springrest.dtoservice.UserDtoService;
 import com.springrest.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user/**")
 public class UserRestController {
 
-    private final UserDtoService dtoService;
-
-    public UserRestController(UserDtoService dtoService) {
-        this.dtoService = dtoService;
-    }
 
     @GetMapping("authUser")
     public ResponseEntity<UserDto> getAuthUser() {
@@ -27,7 +21,7 @@ public class UserRestController {
                 .getContext()
                 .getAuthentication()
                 .getPrincipal();
-        UserDto dtoUser = dtoService.getAuthUserInfo(user);
+        UserDto dtoUser = new UserDto(user);
         return dtoUser != null
                 ? new ResponseEntity<>(dtoUser, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);

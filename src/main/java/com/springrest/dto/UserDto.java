@@ -1,90 +1,70 @@
 package com.springrest.dto;
 
 import com.springrest.model.Role;
+import com.springrest.model.User;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class UserDto {
-    private Long uId;
-    private String uNickname;
-    private String uFirstName;
-    private String uLastName;
-    private int uAge;
-    private String uEmail;
-    private String uPassword;
-    private String uConfirmPassword;
-    private Set<Role> uSetRoles = new HashSet<>();
+    private Long id;
+    private String nickname;
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String email;
+    private String password;
+    private String confirmPassword;
+    private Set<Role> setRoles = new HashSet<>();
 
-    public Long getuId() {
-        return uId;
+    public UserDto() {
     }
 
-    public void setuId(Long uId) {
-        this.uId = uId;
+    public UserDto(User user) {
+        this.id = user.getId();
+        this.nickname = user.getNickname();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.age = user.getAge();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.confirmPassword = user.getConfirmPassword();
+        this.setRoles = user.getRoles();
     }
 
-    public String getuNickname() {
-        return uNickname;
+    public Long getId() {
+        return id;
     }
 
-    public void setuNickname(String uNickname) {
-        this.uNickname = uNickname;
+    public String getNickname() {
+        return nickname;
     }
 
-    public String getuFirstName() {
-        return uFirstName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setuFirstName(String uFirstName) {
-        this.uFirstName = uFirstName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public String getuLastName() {
-        return uLastName;
+    public int getAge() {
+        return age;
     }
 
-    public void setuLastName(String uLastName) {
-        this.uLastName = uLastName;
+    public String getEmail() {
+        return email;
     }
 
-    public int getuAge() {
-        return uAge;
+    public String getPassword() {
+        return password;
     }
 
-    public void setuAge(int uAge) {
-        this.uAge = uAge;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
-    public String getuEmail() {
-        return uEmail;
-    }
-
-    public void setuEmail(String uEmail) {
-        this.uEmail = uEmail;
-    }
-
-    public String getuPassword() {
-        return uPassword;
-    }
-
-    public void setuPassword(String uPassword) {
-        this.uPassword = uPassword;
-    }
-
-    public String getuConfirmPassword() {
-        return uConfirmPassword;
-    }
-
-    public void setuConfirmPassword(String uConfirmPassword) {
-        this.uConfirmPassword = uConfirmPassword;
-    }
-
-    public Set<Role> getuSetRoles() {
-        return uSetRoles;
-    }
-
-    public void setuSetRoles(Set<Role> uSetRoles) {
-        this.uSetRoles = uSetRoles;
+    public Set<Role> getSetRoles() {
+        return setRoles;
     }
 }

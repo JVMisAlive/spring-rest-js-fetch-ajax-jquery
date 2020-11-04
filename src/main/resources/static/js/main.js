@@ -22,7 +22,7 @@ async function getAuthUser() {
     fetch(navbarInfo)
         .then(response => (response.json()))
         .then(data => {
-            authUserForm(data.uEmail, JSON.stringify(data.uSetRoles
+            authUserForm(data.email, JSON.stringify(data.setRoles
                 .map(role => role.name.substring(5)).join(", ")));
         })
 }
@@ -40,14 +40,14 @@ $("#v-pills-profile-tab").click(function () {
         dataType: "json",
         success: function (data) {
             $('#userInformation').append($('<tr>').append(
-                $('<td>').text(data.uId),
-                $('<td>').text(data.uNickname),
-                $('<td>').text(data.uFirstName),
-                $('<td>').text(data.uLastName),
-                $('<td>').text(data.uAge),
-                $('<td>').text(data.uEmail),
-                $('<td>').text(data.uPassword),
-                $('<td>').text(JSON.stringify(data.uSetRoles.map(role => role.name.substring(5)).join(", ")))
+                $('<td>').text(data.id),
+                $('<td>').text(data.nickname),
+                $('<td>').text(data.firstName),
+                $('<td>').text(data.lastName),
+                $('<td>').text(data.age),
+                $('<td>').text(data.email),
+                $('<td>').text(data.password),
+                $('<td>').text(JSON.stringify(data.setRoles.map(role => role.name.substring(5)).join(", ")))
             ))
         }
     });
@@ -63,14 +63,14 @@ function getUsersTable() {
         success: function (data) {
             $.each(data, function (i, user) {
                 $('#tbody').append($('<tr>').append(
-                    $('<td>').text(user.uId),
-                    $('<td>').text(user.uNickname),
-                    $('<td>').text(user.uFirstName),
-                    $('<td>').text(user.uLastName),
-                    $('<td>').text(user.uAge),
-                    $('<td>').text(user.uEmail),
-                    $('<td>').text(user.uPassword),
-                    $('<td>').text(user.uSetRoles.map(role => role.name.substring(5)).join(", ")),
+                    $('<td>').text(user.id),
+                    $('<td>').text(user.nickname),
+                    $('<td>').text(user.firstName),
+                    $('<td>').text(user.lastName),
+                    $('<td>').text(user.age),
+                    $('<td>').text(user.email),
+                    $('<td>').text(user.password),
+                    $('<td>').text(user.setRoles.map(role => role.name.substring(5)).join(", ")),
                     $('<td>').append($('<button>').text("Edit").attr({
                         "type": "button",
                         "class": "btn btn-primary edit",
@@ -97,13 +97,13 @@ $(document).on("click", ".addNew", function () {
 
     let newUserForm = {
 
-        uNickname: $("#newNickname").val(),
-        uFirstName: $("#newFirstName").val(),
-        uLastName: $("#newLastName").val(),
-        uAge: $("#newAge").val(),
-        uEmail: $("#newEmail").val(),
-        uPassword: $("#newPassword").val(),
-        uSetRoles: roleArray
+        nickname: $("#newNickname").val(),
+        firstName: $("#newFirstName").val(),
+        lastName: $("#newLastName").val(),
+        age: $("#newAge").val(),
+        email: $("#newEmail").val(),
+        password: $("#newPassword").val(),
+        setRoles: roleArray
     };
     $.ajax({
         type: 'POST',
@@ -123,14 +123,14 @@ $(document).on("click", ".addNew", function () {
 $(document).on("click", ".edit", function () {
     let user = $(this).data('user');
 
-    $("#editId").val(user.uId);
-    $("#editNickname").val(user.uNickname);
-    $("#editFirstName").val(user.uFirstName);
-    $("#editLastName").val(user.uLastName);
-    $("#editAge").val(user.uAge);
-    $("#editEmail").val(user.uEmail);
-    $("#editPassword").val(user.uPassword);
-    $("#editRole").val(user.uSetRoles.map(role => role.name));
+    $("#editId").val(user.id);
+    $("#editNickname").val(user.nickname);
+    $("#editFirstName").val(user.firstName);
+    $("#editLastName").val(user.lastName);
+    $("#editAge").val(user.age);
+    $("#editEmail").val(user.email);
+    $("#editPassword").val(user.password);
+    $("#editRole").val(user.setRoles.map(role => role.name));
 });
 //Edit
 $(document).on("click", ".editUser", function () {
@@ -140,14 +140,14 @@ $(document).on("click", ".editUser", function () {
 
     let editUserForm = {
 
-        uId: $("#editId").val(),
-        uNickname: $("#editNickname").val(),
-        uFirstName: $("#editFirstName").val(),
-        uLastName: $("#editLastName").val(),
-        uAge: $("#editAge").val(),
-        uEmail: $("#editEmail").val(),
-        uPassword: $("#editPassword").val(),
-        uSetRoles: roleArray
+        id: $("#editId").val(),
+        nickname: $("#editNickname").val(),
+        firstName: $("#editFirstName").val(),
+        lastName: $("#editLastName").val(),
+        age: $("#editAge").val(),
+        email: $("#editEmail").val(),
+        password: $("#editPassword").val(),
+        setRoles: roleArray
     };
 
     $.ajax({
@@ -163,14 +163,14 @@ $(document).on("click", ".editUser", function () {
 $(document).on("click", ".delete", function () {
     let delUser = $(this).data('user');
 
-    $("#delId").val(delUser.uId);
-    $("#delNickname").val(delUser.uNickname);
-    $("#delFirstName").val(delUser.uFirstName);
-    $("#delLastName").val(delUser.uLastName);
-    $("#delAge").val(delUser.uAge);
-    $("#delEmail").val(delUser.uEmail);
-    $("#delPassword").val(delUser.uPassword);
-    $("#delRole").val(delUser.uSetRoles.map(role => role.name.substring(5)).join(", "));
+    $("#delId").val(delUser.id);
+    $("#delNickname").val(delUser.nickname);
+    $("#delFirstName").val(delUser.firstName);
+    $("#delLastName").val(delUser.lastName);
+    $("#delAge").val(delUser.age);
+    $("#delEmail").val(delUser.email);
+    $("#delPassword").val(delUser.password);
+    $("#delRole").val(delUser.setRoles.map(role => role.name.substring(5)).join(", "));
 });
 //DeleteButton
 $(document).on("click", ".deleteButton", function () {
