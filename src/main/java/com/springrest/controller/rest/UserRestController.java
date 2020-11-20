@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user/**")
 public class UserRestController {
 
-
     @GetMapping("authUser")
     public ResponseEntity<UserDto> getAuthUser() {
         User user = (User) SecurityContextHolder
@@ -22,9 +21,7 @@ public class UserRestController {
                 .getAuthentication()
                 .getPrincipal();
         UserDto dtoUser = new UserDto(user);
-        return dtoUser != null
-                ? new ResponseEntity<>(dtoUser, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(dtoUser, HttpStatus.OK);
     }
 
 }

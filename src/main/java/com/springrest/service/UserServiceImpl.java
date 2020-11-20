@@ -1,5 +1,6 @@
 package com.springrest.service;
 
+import com.springrest.dto.UserDto;
 import com.springrest.model.User;
 import com.springrest.repository.RoleRepository;
 import com.springrest.repository.UserRepository;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,15 +33,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> allUsers() {
-        return userRepository.findAll();
+    public List<UserDto> allUsers() {
+        List<User> users = userRepository.findAll();
+        List<UserDto> userDto = new ArrayList<>();
+        users.forEach(user -> userDto.add(new UserDto(user)));
+        return userDto;
     }
-
-    @Override
-    public User findById(Long id) {
-        return userRepository.getOne(id);
-    }
-
 
     @Override
     @Transactional
@@ -60,12 +59,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByNickname(String nickname) {
-        return userRepository.getUserByNickname(nickname);
+    public User getUserById(Long id) {
+        return userRepository.getOne(id);
     }
 
     @Override
-    public User getUserById(Long id) {
-        return userRepository.getOne(id);
+    public boolean ifExists(Long id) {
+        return userRepository.existsById(id);
     }
 }

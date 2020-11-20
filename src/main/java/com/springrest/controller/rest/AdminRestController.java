@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,13 +22,8 @@ public class AdminRestController {
 
     @GetMapping("admin/allUsers")
     public ResponseEntity<List<UserDto>> userList() {
-        List<User> users = userService.allUsers();
-
-        List<UserDto> userDto = new ArrayList<>();
-        users.forEach(user -> userDto.add(new UserDto(user)));
-        return userDto != null && !userDto.isEmpty()
-                ? new ResponseEntity<>(userDto, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        List<UserDto> users = userService.allUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("admin/userAuth")
@@ -39,9 +33,7 @@ public class AdminRestController {
                 .getAuthentication()
                 .getPrincipal();
         UserDto userDto = new UserDto(user);
-        return userDto != null
-                ? new ResponseEntity<>(userDto, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @PostMapping("admin/add")
@@ -66,10 +58,12 @@ public class AdminRestController {
 
     @GetMapping("admin/edit/user/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable(name = "id") Long id) {
-        UserDto userDto = new UserDto(userService.getUserById(id));
-        return userDto != null
-                ? new ResponseEntity<>(userDto, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (id != null && userService.ifExists(id)) {
+            UserDto userDto = new UserDto(userService.getUserById(id));
+            return new ResponseEntity<>(userDto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("admin/delete/{id}")
