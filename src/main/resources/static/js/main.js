@@ -46,7 +46,7 @@ $("#v-pills-profile-tab").click(function () {
                 $('<td>').text(data.lastName),
                 $('<td>').text(data.age),
                 $('<td>').text(data.email),
-                $('<td>').text(data.password),
+                $('<td>').text("**********"),
                 $('<td>').text(JSON.stringify(data.setRoles.map(role => role.name.substring(5)).join(", ")))
             ))
         }
@@ -69,7 +69,7 @@ function getUsersTable() {
                     $('<td>').text(user.lastName),
                     $('<td>').text(user.age),
                     $('<td>').text(user.email),
-                    $('<td>').text(user.password),
+                    $('<td>').text("**********"),
                     $('<td>').text(user.setRoles.map(role => role.name.substring(5)).join(", ")),
                     $('<td>').append($('<button>').text("Edit").attr({
                         "type": "button",
@@ -129,7 +129,7 @@ $(document).on("click", ".edit", function () {
     $("#editLastName").val(user.lastName);
     $("#editAge").val(user.age);
     $("#editEmail").val(user.email);
-    $("#editPassword").val(user.password);
+    $("#editPassword").val("**********");
     $("#editRole").val(user.setRoles.map(role => role.name));
 });
 //Edit
@@ -169,7 +169,7 @@ $(document).on("click", ".delete", function () {
     $("#delLastName").val(delUser.lastName);
     $("#delAge").val(delUser.age);
     $("#delEmail").val(delUser.email);
-    $("#delPassword").val(delUser.password);
+    $("#delPassword").val("**********");
     $("#delRole").val(delUser.setRoles.map(role => role.name.substring(5)).join(", "));
 });
 //DeleteButton
